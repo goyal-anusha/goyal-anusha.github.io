@@ -27,9 +27,8 @@
       <nav class="nav" role="navigation">
         <a href="#top" class="nav__mark">AG</a>
         <ul class="nav__items">
-          <li class="nav__item"><a href="#passion-projects" class="nav__link">Passion Projects</a></li>
           <li class="nav__item"><a href="#work-experience" class="nav__link">Work Experience</a></li>
-          <li class="nav__item"><a href="#data-projects" class="nav__link">Data Projects</a></li>
+          <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
           <li class="nav__item"><a href="#extracurriculars" class="nav__link">Outside Data</a></li>
           <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
           <li class="nav__item"><a href="#contact" class="nav__link nav__link--cta">Contact</a></li>
@@ -37,12 +36,17 @@
       </nav>
     </div>
 
+    <div class="header__glow" aria-hidden="true"></div>
+
     <div class="header__text-box row">
       <p class="header__eyebrow">role: data scientist &middot; based: san francisco, ca</p>
       <h1 class="heading-primary">
         <span>Anusha Goyal</span>
       </h1>
-      <p class="header__degrees">M.S. Applied Analytics &nbsp;/&nbsp; B.A. Geography &nbsp;/&nbsp; B.A. International Development Studies</p>
+      <ul class="header__education">
+        <li><span class="header__degree">M.S. Applied Analytics</span>, Columbia University in the City of New York</li>
+        <li><span class="header__degree">B.A. Geography &amp; B.A. International Development Studies</span>, University of California, Los Angeles</li>
+      </ul>
       <div class="header__actions">
         <a href="#work-experience" class="btn btn--pink">See the work</a>
         <a href="#contact" class="btn btn--outline">Get in touch</a>
@@ -51,48 +55,6 @@
   </header>
 
   <main role="main">
-
-    <!-- ***** Passion Projects ***** -->
-
-    <section class="passion-projects" id="passion-projects">
-      <div class="row">
-        <p class="section__eyebrow">just for fun</p>
-        <h2>Passion Projects</h2>
-
-        <div class="recipe-card">
-          <div class="recipe-card__header">
-            <p class="section__eyebrow section__eyebrow--on-dark">Stitching together any recipes you want</p>
-            <h2>FrankenFood</h2>
-            <p class="recipe-card__tagline">
-              A prototype that will allow you to stitch together the best parts of any recipes you want. Whether you don't have an ingredient for the frosting. Whether you just like the other flavors. FrankenFood will merge the recipes for you. 
-            </p>
-          </div>
-
-          <div class="recipe-card__body">
-            <div class="recipe-card__image-box">
-              <img src="./images/frankenfood.jpg" class="recipe-card__image" alt="FrankenFood prototype" />
-            </div>
-            <div class="recipe-card__details">
-              <p class="recipe-card__label">latest prototype</p>
-              <h3>Be Your Own Recipe Developer</h3>
-              <p>
-                I built this when I wanted to bake my friend her ideal cake but needed 3 different recipes. I used AI to help me combine my shopping list and the recipes. Instead of going through this work, you can just use FrankenFood. 
-              </p>
-              <p class="recipe-card__label">Tools</p>
-              <ul class="recipe-card__ingredients">
-                <li>HTML</li>
-                <li>Prompt Engineering</li>
-                <li>Claude Code</li>
-                <li>Python</li>
-              </ul>
-              <a href="#" class="link__text link__text--on-dark">
-                Check it Out <span>&rarr;</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- ***** Work Experience ***** -->
 
@@ -142,13 +104,47 @@
       </div>
     </section>
 
-    <!-- ***** Data Projects ***** -->
+    <!-- ***** Projects ***** -->
 
-    <section class="work" id="data-projects">
+    <section class="projects" id="projects">
       <div class="row">
-        <p class="section__eyebrow">school and independent work</p>
-        <h2>Data Projects</h2>
-        <div class="work__boxes">
+        <p class="section__eyebrow">from the kitchen to the notebook</p>
+        <h2>Projects</h2>
+
+        <div class="recipe-card">
+          <div class="recipe-card__header">
+            <p class="section__eyebrow section__eyebrow--on-dark">the lab notebook, in the kitchen</p>
+            <h2>FrankenFood</h2>
+            <p class="recipe-card__tagline">
+              A running prototype series where two recipes that shouldn't work together, do. Part cooking, part experiment design. Hypothesis, test batch, taste test, iterate.
+            </p>
+          </div>
+
+          <div class="recipe-card__body">
+            <div class="recipe-card__image-box">
+              <img src="./images/frankenfood.jpg" class="recipe-card__image" alt="FrankenFood prototype" />
+            </div>
+            <div class="recipe-card__details">
+              <p class="recipe-card__label">latest prototype</p>
+              <h3>Name this creation</h3>
+              <p>
+                Describe the mashup here: what two dishes it combines, what problem it solves, and how it turned out.
+              </p>
+              <p class="recipe-card__label">ingredients on the label</p>
+              <ul class="recipe-card__ingredients">
+                <li>Ingredient</li>
+                <li>Ingredient</li>
+                <li>Ingredient</li>
+                <li>Ingredient</li>
+              </ul>
+              <a href="#" class="link__text link__text--on-dark">
+                See the full write up <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="work__boxes work__boxes--projects">
 
           <div class="work__box">
             <div class="work__image-box">
@@ -246,7 +242,7 @@
               <img src="./images/hobby1.png" class="ex-card__image" alt="Baking" />
             </div>
             <h3>Baking</h3>
-            <p>Weekend experiments in the kitchen, from precise macaroon timelines to the occasional FrankenFood creation.</p>
+            <p>Weekend experiments in the kitchen, from precise sourdough timelines to the occasional FrankenFood creation.</p>
           </div>
 
           <div class="ex-card">
@@ -286,7 +282,7 @@
         <div class="about__content">
           <div class="about__text">
             <p>
-              I'm Anusha, a data enthusiast based in San Francisco. I'm passionate about leveraging data to drive business insights and improve user experiences. Outside of data, I love baking, movies, and crafting, a passion that shows up in projects like FrankenFood, my passion project for inventing fun foods out of unrelated recipes.
+              I'm Anusha, a data enthusiast based in San Francisco. I'm passionate about leveraging data to drive business insights and improve user experiences. I'm constantly working towards expanding my skills and knowledge.
             </p>
           </div>
 
@@ -305,12 +301,9 @@
       <p class="section__eyebrow section__eyebrow--on-dark">get in touch</p>
       <h2>Let's Connect</h2>
       <div class="contact__info">
-        <p>
-          I'd love to chat about anything and everything, so let's connect. I'm always looking to learn from fellow professionals. The best way to reach me is through a LinkedIn message, find my profile below. Prefer email? Reach out directly instead.
-        </p>
         <div class="contact__actions">
           <a href="https://www.linkedin.com/in/anusha-goyal/" class="btn btn--pink">Connect on LinkedIn</a>
-          <a href="mailto:anusha.v.goyal@gmail.com" class="btn btn--outline btn--outline-dark">Email Me</a>
+          <a href="mailto:youremail@example.com" class="btn btn--outline btn--outline-dark">Email Me</a>
         </div>
       </div>
     </div>
