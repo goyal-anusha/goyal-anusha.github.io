@@ -6,67 +6,158 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" type="image/png" href="./images/favicon.jpg" />
 
-  <!-- Put your site title here -->
-  <title>
-    Anusha Goyal
-  </title>
+  <title>Anusha Goyal</title>
 
   <meta name="description" content="Hi! I'm a tech professional who is passionate about harnessing the power of data to solve complex problems.">
-  <!-- Add some coding keywords below, Ex: (React, CSS etc) -->
   <meta name="keywords" content="Anusha Goyal, python, data science, product, SQL, machine learning" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="index.css" />
 </head>
 
 <body>
 
-  <!-- ***** Header ***** -->
+  <!-- ***** Header / Nav ***** -->
 
   <header class="header" role="banner" id="top">
-    <div class="row">
+    <div class="row header__row">
       <nav class="nav" role="navigation">
+        <a href="#top" class="nav__mark">AG</a>
         <ul class="nav__items">
-          <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
-          <li class="nav__item">
-            <a href="#about" class="nav__link">About</a>
-          </li>
-          <li class="nav__item">
-            <a href="https://drive.google.com/file/d/1WJleEwnr_L5eDal_fQ2zpWjmvJJNZxA_/view?usp=sharing" target="_blank" class="nav__link">Resume</a>
-          </li>
-          <li class="nav__item">
-            <a href="#contact" class="nav__link">Contact</a>
-          </li>
+          <li class="nav__item"><a href="#passion-projects" class="nav__link">Passion Projects</a></li>
+          <li class="nav__item"><a href="#work-experience" class="nav__link">Work Experience</a></li>
+          <li class="nav__item"><a href="#data-projects" class="nav__link">Data Projects</a></li>
+          <li class="nav__item"><a href="#extracurriculars" class="nav__link">Outside Data</a></li>
+          <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+          <li class="nav__item"><a href="#contact" class="nav__link nav__link--cta">Contact</a></li>
         </ul>
       </nav>
     </div>
+
     <div class="header__text-box row">
-      <div class="header__text">
-        <h1 class="heading-primary">
-          <!-- Replace the following name with your name -->
-          <span>Anusha Goyal</span>
-        </h1>
-        <!-- Put a small paragraph about yourself -->
-        <p>MS. Applied Analytics<br>BA. Geography<br>BA. International Development Studies</p>
-        <a href="#contact" class="btn btn--pink">Get in touch</a>
+      <p class="header__eyebrow">role: data scientist &middot; based: san francisco, ca</p>
+      <h1 class="heading-primary">
+        <span>Anusha Goyal</span>
+      </h1>
+      <p class="header__degrees">M.S. Applied Analytics &nbsp;/&nbsp; B.A. Geography &nbsp;/&nbsp; B.A. International Development Studies</p>
+      <div class="header__actions">
+        <a href="#work-experience" class="btn btn--pink">See the work</a>
+        <a href="#contact" class="btn btn--outline">Get in touch</a>
       </div>
     </div>
   </header>
 
   <main role="main">
 
-    <!-- ***** Work ***** -->
+    <!-- ***** Passion Projects ***** -->
 
-    <section class="work" id="work">
+    <section class="passion-projects" id="passion-projects">
       <div class="row">
-        <h2>My Work</h2>
+        <p class="section__eyebrow">just for fun</p>
+        <h2>Passion Projects</h2>
+
+        <div class="recipe-card">
+          <div class="recipe-card__header">
+            <p class="section__eyebrow section__eyebrow--on-dark">Stitching together any recipes you want</p>
+            <h2>FrankenFood</h2>
+            <p class="recipe-card__tagline">
+              A prototype that will allow you to stitch together the best parts of any recipes you want. Whether you don't have an ingredient for the frosting. Whether you just like the other flavors. FrankenFood will merge the recipes for you. 
+            </p>
+          </div>
+
+          <div class="recipe-card__body">
+            <div class="recipe-card__image-box">
+              <img src="./images/frankenfood.jpg" class="recipe-card__image" alt="FrankenFood prototype" />
+            </div>
+            <div class="recipe-card__details">
+              <p class="recipe-card__label">latest prototype</p>
+              <h3>Be Your Own Recipe Developer</h3>
+              <p>
+                I built this when I wanted to bake my friend her ideal cake but needed 3 different recipes. I used AI to help me combine my shopping list and the recipes. Instead of going through this work, you can just use FrankenFood. 
+              </p>
+              <p class="recipe-card__label">Tools</p>
+              <ul class="recipe-card__ingredients">
+                <li>HTML</li>
+                <li>Prompt Engineering</li>
+                <li>Claude Code</li>
+                <li>Python</li>
+              </ul>
+              <a href="#" class="link__text link__text--on-dark">
+                Check it Out <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ***** Work Experience ***** -->
+
+    <section class="work" id="work-experience">
+      <div class="row">
+        <p class="section__eyebrow">professional roles</p>
+        <h2>Work Experience</h2>
         <div class="work__boxes">
 
-          <!-- Each div with the work__box class is a project. -->
+          <div class="work__box">
+            <div class="work__image-box">
+              <img src="./images/walmart.png" class="work__image" alt="Walmart Inc." />
+            </div>
+            <div class="work__text">
+              <h3>Walmart Inc.</h3>
+              <p>
+                On the Search Ranking team as a Data Scientist, I deployed data pipelines and ML models that improved search engagement and relevance. I worked on predicting engagement with neural network models, eliminating position bias, and using SEO engagement data to enhance ranking.
+              </p>
+              <ul class="work__list">
+                <li>Python &amp; SQL</li>
+                <li>GCP</li>
+                <li>Machine Learning</li>
+                <li>Airflow Pipelines</li>
+              </ul>
+            </div>
+          </div>
 
           <div class="work__box">
+            <div class="work__image-box">
+              <img src="./images/citymapper.png" class="work__image" alt="Citymapper" />
+            </div>
+            <div class="work__text">
+              <h3>Citymapper</h3>
+              <p>
+                As a Product Data Analyst at Citymapper, I managed data deployment for 8 US cities. This included integrating transit agency APIs, designing web scrapers for real-time data, and wrangling data from 100+ transit agencies.
+              </p>
+              <ul class="work__list">
+                <li>Python</li>
+                <li>AWS</li>
+                <li>APIs</li>
+                <li>Git</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ***** Data Projects ***** -->
+
+    <section class="work" id="data-projects">
+      <div class="row">
+        <p class="section__eyebrow">school and independent work</p>
+        <h2>Data Projects</h2>
+        <div class="work__boxes">
+
+          <div class="work__box">
+            <div class="work__image-box">
+              <img src="./images/IMBD-slide.png" class="work__image" alt="IMDB Project" />
+            </div>
             <div class="work__text">
               <h3>IMDB's Predictive Power</h3>
               <p>
-                A data exploration that predicts the audience ratings of a movie using audience reviews scraped from the IMDB website. 
+                A data exploration that predicts the audience ratings of a movie using audience reviews scraped from the IMDB website.
               </p>
               <ul class="work__list">
                 <li>R</li>
@@ -74,7 +165,6 @@
                 <li>APIs</li>
                 <li>Sentiment Analysis</li>
               </ul>
-
               <div class="work__links">
                 <a href="https://github.com/goyal-anusha/portfolio/tree/main/IMDB%20review%20analysis" class="link__text">
                   Visit Site <span>&rarr;</span>
@@ -84,25 +174,23 @@
                 </a>
               </div>
             </div>
-            <div class="work__image-box">
-              <img src="./images/IMBD-slide.png" class="work__image" alt="IMDB Project" />
-            </div>
           </div>
 
           <div class="work__box">
+            <div class="work__image-box">
+              <img src="./images/database.jpg" class="work__image" alt="Database Design Project" />
+            </div>
             <div class="work__text">
               <h3>A Database Business Pitch</h3>
               <p>
-                A business pitch that identified a potential buiness called Craze that allows users to reserve hobby-based activies through a subscription model. 
-                The project focuses on what database structure would be best and implements a flask application to demonstrate the use-cases.  
+                A business pitch that identified a potential business called Craze that allows users to reserve hobby-based activities through a subscription model. The project focuses on what database structure would be best and implements a Flask application to demonstrate the use cases.
               </p>
               <ul class="work__list">
                 <li>Python (Flask)</li>
-                <li>PostgresSQL</li>
+                <li>PostgreSQL</li>
                 <li>PySpark</li>
                 <li>MongoDB</li>
               </ul>
-
               <div class="work__links">
                 <a href="https://github.com/goyal-anusha/portfolio/tree/main/database_design_project" target="_blank" class="link__text">
                   Visit Site <span>&rarr;</span>
@@ -112,22 +200,21 @@
                 </a>
               </div>
             </div>
-            <div class="work__image-box">
-              <img src="./images/database.jpg" class="work__image" alt="Python Comparer" />
-            </div>
           </div>
 
           <div class="work__box">
+            <div class="work__image-box">
+              <img src="./images/netflix_graphics.jpg" class="work__image" alt="Netflix Growth Project" />
+            </div>
             <div class="work__text">
               <h3>Analysis of Netflix's Growth Opportunities</h3>
               <p>
-                This project built in Tableau tells the story of Netflix's future growth opportunities through various graphs. 
+                This project, built in Tableau, tells the story of Netflix's future growth opportunities through a series of visual narratives.
               </p>
               <ul class="work__list">
                 <li>Tableau</li>
                 <li>Storytelling</li>
               </ul>
-
               <div class="work__links">
                 <a href="https://github.com/goyal-anusha/portfolio/tree/main/netflix_growth" class="link__text">
                   Visit Site <span>&rarr;</span>
@@ -137,30 +224,55 @@
                 </a>
               </div>
             </div>
-            <div class="work__image-box">
-              <img src="./images/netflix_graphics.jpg" class="work__image" alt="Project 3" />
-            </div>
           </div>
 
-          <div class="work__box">
-            <div class="work__text">
-              <h3>Citymapper</h3>
-              <p>
-                During my 2 years as a Data Analyst for Citymapper I managed data deployment for 8 US cities. This included
-                integrating transit agency APIs, designing web scrapers to incorporate real-time data, and wrangling data from 100+ transit agencies. 
-              </p>
-              <ul class="work__list">
-                <li>Python</li>
-                <li>AWS</li>
-                <li>APIs</li>
-                <li>Git</li>
-              </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ***** Extracurriculars ***** -->
+
+    <section class="extracurriculars" id="extracurriculars">
+      <div class="row">
+        <p class="section__eyebrow">outside of data</p>
+        <h2>What I Get Up To</h2>
+        <p class="extracurriculars__intro">
+          Outside of notebooks and dashboards, I'm usually building something with my hands instead of my keyboard.
+        </p>
+        <div class="extracurriculars__grid">
+
+          <div class="ex-card">
+            <div class="ex-card__image-box">
+              <img src="./images/hobby1.png" class="ex-card__image" alt="Baking" />
             </div>
-            <div class="work__image-box">
-              <img src="./images/citymapper.png" class="work__image" alt="Citymapper" />
-            </div>
+            <h3>Baking</h3>
+            <p>Weekend experiments in the kitchen, from precise macaroon timelines to the occasional FrankenFood creation.</p>
           </div>
-        
+
+          <div class="ex-card">
+            <div class="ex-card__image-box">
+              <img src="./images/hobby2.png" class="ex-card__image" alt="Food Reviews as a Yelp Elite" />
+            </div>
+            <h3>Food Reviews</h3>
+            <p>I'm a Yelp Elite member, always on the hunt for a new favorite restaurant and happy to write up the results.</p>
+          </div>
+
+          <div class="ex-card">
+            <div class="ex-card__image-box">
+              <img src="./images/hobby3.png" class="ex-card__image" alt="Camera Operations and AD for Columbia Sports" />
+            </div>
+            <h3>Camera Ops &amp; AD, Columbia Sports</h3>
+            <p>During my masters, I worked camera operations and as an assistant director for Columbia Sports, helping produce game broadcasts for local networks and ESPN+.</p>
+          </div>
+
+          <div class="ex-card">
+            <div class="ex-card__image-box">
+              <img src="./images/hobby4.png" class="ex-card__image" alt="Volunteering at animal shelters and a local arts NGO" />
+            </div>
+            <h3>Volunteering</h3>
+            <p>I split my volunteer time between local animal shelters and a local arts NGO, supporting their programs however I can.</p>
+          </div>
+
         </div>
       </div>
     </section>
@@ -169,23 +281,17 @@
 
     <section class="about" id="about">
       <div class="row">
+        <p class="section__eyebrow">about</p>
         <h2>About Me</h2>
         <div class="about__content">
           <div class="about__text">
-            <!-- Replace the below paragraph with info about yourself -->
             <p>
-              I'm Anusha, a tech enthusiast, and am currently attaining my Masters
-              of Science in Applied Analytics at Columbia University. My 2 years of industry experience
-              compliments this degree and I hope to keep expanding my skillset in the future. Outside of 
-              professional and academic development I enjoy picking up new hobbies. My favorite hobbies currently are baking and reading. 
+              I'm Anusha, a data enthusiast based in San Francisco. I'm passionate about leveraging data to drive business insights and improve user experiences. Outside of data, I love baking, movies, and crafting, a passion that shows up in projects like FrankenFood, my passion project for inventing fun foods out of unrelated recipes.
             </p>
-            <!-- Provide a link to your resume -->
-            <a href="https://drive.google.com/file/d/1WJleEwnr_L5eDal_fQ2zpWjmvJJNZxA_/view?usp=sharing" target="_blank" class="btn">My Resume</a>
           </div>
 
           <div class="about__photo-container">
-            <!-- Add a nice photo of yourself -->
-            <img class="about__photo" src="./images/img_anusha.jpg" alt="" />
+            <img class="about__photo" src="./images/img_anusha.jpg" alt="Anusha Goyal" />
           </div>
         </div>
       </div>
@@ -196,15 +302,16 @@
 
   <section class="contact" id="contact">
     <div class="row">
-      <h2>Get in Touch</h2>
+      <p class="section__eyebrow section__eyebrow--on-dark">get in touch</p>
+      <h2>Let's Connect</h2>
       <div class="contact__info">
         <p>
-          I'd love to chat about anything and everything so let's connect. 
-          I'm always looking to learn from fellow professionals.
-          The best way to reach me would be through LinkedIn message. You can find my profile below.  
+          I'd love to chat about anything and everything, so let's connect. I'm always looking to learn from fellow professionals. The best way to reach me is through a LinkedIn message, find my profile below. Prefer email? Reach out directly instead.
         </p>
-        <!-- Replace the email with yours -->
-        <a href="https://www.linkedin.com/in/anusha-goyal/" class="btn">LinkedIn</a>
+        <div class="contact__actions">
+          <a href="https://www.linkedin.com/in/anusha-goyal/" class="btn btn--pink">Connect on LinkedIn</a>
+          <a href="mailto:anusha.v.goyal@gmail.com" class="btn btn--outline btn--outline-dark">Email Me</a>
+        </div>
       </div>
     </div>
   </section>
@@ -213,7 +320,6 @@
 
   <footer role="contentinfo" class="footer">
     <div class="row">
-      <!-- Update the links to point to your accounts -->
       <ul class="footer__social-links">
         <li class="footer__social-link-item">
           <a href="https://github.com/goyal-anusha/" title="Link to Github Profile">
@@ -226,6 +332,7 @@
           </a>
         </li>
       </ul>
+      <p class="footer__note">Anusha Goyal &middot; San Francisco, CA</p>
     </div>
   </footer>
 
