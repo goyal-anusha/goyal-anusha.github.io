@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FrankenFood: Stitch Your Perfect Recipe</title>
+<meta name="description" content="FrankenFood merges the best parts of different online recipes into one perfect, easy-to-follow dish." />
+
+<!-- Fallback friendly display font (loads only if Grantha Sangam MN, a macOS system font, is unavailable) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#191919',
+          accent: '#FF9F1C',
+          accentSoft: '#FFE4BC',
+          mint: '#E3F3EA',
+          lavender: '#F1EAF7',
+          peach: '#FFF1E4',
+          cream: '#FFFBF5',
+          muted: '#6B6560',
+          zest: '#DBFE87',
+          periwinkle: '#D8E4FF',
+        },
+        fontFamily: {
+          display: ["'Grantha Sangam MN'", "'Baloo 2'", "ui-rounded", "sans-serif"],
+          body: ["Calibri", "'Trebuchet MS'", "sans-serif"],
+        },
+        borderRadius: {
+          stitch: '1.25rem',
+        },
+      },
+    },
+  }
+</script>
+
+<style>
+  /* Stitch-seam signature element: a dashed line that "sews" two things together */
+  .stitch-seam {
+    position: relative;
+  }
+  .stitch-seam::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px dashed rgba(25,25,25,0.18);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  .stitch-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .stitch-divider::before,
+  .stitch-divider::after {
+    content: "";
+    flex: 1;
+    height: 0;
+    border-top: 2px dashed rgba(25,25,25,0.15);
+  }
+
+  @keyframes stitchPull {
+    0% { stroke-dashoffset: 60; opacity: 0; }
+    100% { stroke-dashoffset: 0; opacity: 1; }
+  }
+  .stitch-anim path {
+    stroke-dasharray: 60;
+    animation: stitchPull 1.1s ease forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stitch-anim path { animation: none; stroke-dashoffset: 0; opacity: 1; }
+    * { scroll-behavior: auto !important; }
+  }
+
+  html { scroll-behavior: smooth; }
+
+  .focus-ring:focus-visible {
+    outline: 3px solid #FF9F1C;
+    outline-offset: 2px;
+  }
+
+  .btn-cta {
+    transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+  }
+  .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -8px rgba(255,159,28,0.55); }
+  .btn-cta:active { transform: translateY(0px) scale(0.98); }
+
+  .card-hover { transition: transform 200ms ease, box-shadow 200ms ease; }
+  .card-hover:hover { transform: translateY(-4px); box-shadow: 0 14px 28px -12px rgba(25,25,25,0.18); }
+
+  .fade-in { animation: fadeIn 400ms ease forwards; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px);} to { opacity: 1; transform: translateY(0);} }
+</style>
+</head>
+
+<body class="bg-cream text-ink font-body antialiased">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-cream/90 backdrop-blur border-b border-ink/10">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 h-16 flex items-center justify-between">
+    <a href="#top" class="font-display font-700 text-lg sm:text-xl tracking-tight flex items-center gap-2 focus-ring rounded">
+      <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <line x1="12" y1="2" x2="12" y2="6.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <path d="M12 6.5 C6.8 7.4 6.2 13 9 16.4 C10 17.7 11 19 12 20.5 C13 19 14 17.7 15 16.4 C17.8 13 17.2 7.4 12 6.5 Z" stroke="white" stroke-width="1.4" stroke-linejoin="round" fill="none"/>
+          <path d="M12 6.5 C9.3 7.8 8.6 12.6 10.3 15.5 C10.8 16.3 11.4 17.2 12 18" stroke="white" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+          <path d="M12 6.5 C14.7 7.8 15.4 12.6 13.7 15.5 C13.2 16.3 12.6 17.2 12 18" stroke="white" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+        </svg>
+      </span>
+      FrankenFood
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-ink/70">
+      <a href="#how-it-works" class="hover:text-ink transition-colors focus-ring rounded">How it works</a>
+      <a href="#examples" class="hover:text-ink transition-colors focus-ring rounded">Examples</a>
+    </nav>
+    <a href="#hero-signup" class="btn-cta inline-flex items-center rounded-full bg-ink text-cream text-sm font-semibold px-4 py-2 focus-ring">
+      Get early access
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 1. HERO -->
+  <section class="relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-5 sm:px-6 pt-14 sm:pt-20 pb-16 sm:pb-24 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full bg-zest text-ink/80 text-xs font-semibold px-3 py-1 mb-5">
+          🧵 Craft 1 perfect dish.
+        </span>
+        <h1 class="font-display font-700 text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.05] tracking-tight">
+          Stop choosing one recipe.
+          <span class="text-accent">Stitch together</span> your best one.
+        </h1>
+        <p class="mt-5 text-base sm:text-lg text-ink/70 max-w-md leading-relaxed">
+          Found the perfect crust in one recipe and the perfect filling in another? FrankenFood merges them into a single, clean recipe card, ingredients and steps included.
+        </p>
+
+        <form id="hero-signup" action="mailto:hello@frankenfood.co" method="post" enctype="text/plain"
+              class="mt-8 flex flex-col sm:flex-row gap-3 max-w-md">
+          <label for="hero-email" class="sr-only">Email address</label>
+          <input id="hero-email" name="email" type="email" required placeholder="you@kitchen.com"
+                 class="focus-ring flex-1 rounded-full border border-ink/15 bg-white px-5 py-3 text-sm placeholder:text-ink/40" />
+          <button type="submit"
+                  class="btn-cta focus-ring rounded-full bg-accent text-white text-sm font-semibold px-6 py-3 whitespace-nowrap">
+            Get early access
+          </button>
+        </form>
+        <p class="mt-3 text-xs text-ink/45">No spam. Just one email when we launch.</p>
+      </div>
+
+      <div class="relative">
+        <div class="relative rounded-stitch overflow-hidden stitch-seam bg-white p-3">
+          <img src="images/hero-macarons.jpg"
+               alt="Chocolate-hazelnut filled macarons cooling on a baking tray"
+               class="w-full h-72 sm:h-96 object-cover rounded-[0.9rem]" />
+        </div>
+        <div class="absolute -bottom-5 -left-5 hidden sm:flex items-center gap-2 bg-white rounded-full shadow-lg px-4 py-2 text-xs font-semibold text-ink/70">
+          <span class="h-2 w-2 rounded-full bg-accent"></span> Merged from 3 recipes
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. PROBLEM / SOLUTION -->
+  <section id="how-it-works" class="bg-mint">
+    <div class="max-w-6xl mx-auto px-5 sm:px-6 py-16 sm:py-24">
+
+      <div class="max-w-2xl">
+        <h2 class="font-display font-700 text-3xl sm:text-4xl tracking-tight">Three recipes walk into a kitchen…</h2>
+        <p class="mt-3 text-ink/70 leading-relaxed">
+          Tell us which part you want from which recipe. We'll stitch it into one clean set of ingredients and steps, no tab-switching, no guesswork.
+        </p>
+      </div>
+
+      <div class="mt-12 grid lg:grid-cols-2 gap-8 items-start">
+
+        <!-- Prompt input card -->
+        <div class="bg-white rounded-stitch p-6 sm:p-8 stitch-seam">
+          <label for="merge-prompt" class="block text-sm font-semibold text-ink/80 mb-2">Describe your FrankenFood</label>
+          <textarea id="merge-prompt" rows="5"
+            class="focus-ring w-full rounded-2xl border border-ink/15 p-4 text-sm leading-relaxed placeholder:text-ink/40"
+          >Use the biscuit crust from the NYT Cheesecake recipe, the lemon filling from Smitten Kitchen's Lemon Bars, and the torch-finished topping from the BBC's Crème Brûlée recipe.</textarea>
+
+          <div class="mt-3 flex flex-wrap gap-2 text-xs">
+            <span class="rounded-full bg-peach px-3 py-1 text-ink/70">🍪 Crust: NYT Cheesecake</span>
+            <span class="rounded-full bg-periwinkle px-3 py-1 text-ink/70">🍋 Filling: Smitten Kitchen</span>
+            <span class="rounded-full bg-zest px-3 py-1 text-ink/70">🔥 Topping: BBC Brûlée</span>
+          </div>
+
+          <button id="merge-btn" type="button"
+            class="btn-cta focus-ring mt-6 w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-ink text-cream text-sm font-semibold px-6 py-3">
+            <span id="merge-btn-label">Stitch it together</span>
+          </button>
+          <p class="mt-2 text-xs text-ink/40">Demo output below, sign up to run this on your own recipes.</p>
+        </div>
+
+        <!-- Output card -->
+        <div id="merge-output" class="bg-white rounded-stitch p-6 sm:p-8 stitch-seam opacity-40">
+          <div class="stitch-divider text-xs font-semibold text-ink/50 mb-4">
+            <span>YOUR MERGED RECIPE</span>
+          </div>
+          <h3 class="font-display font-700 text-xl">Lemon Brûlée Cheesecake Bars</h3>
+          <p class="text-xs text-ink/50 mt-1 mb-4">Serves 9 · 45 min active, 3 hr chilled</p>
+
+          <div id="merge-loading" class="hidden py-10 text-center text-sm text-ink/50">
+            <svg class="stitch-anim mx-auto mb-3" width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 12 L118 12" stroke="#FF9F1C" stroke-width="2" stroke-linecap="round" stroke-dasharray="8 6"/>
+            </svg>
+            Stitching your recipe…
+          </div>
+
+          <div id="merge-result" class="hidden">
+            <h4 class="text-xs font-semibold uppercase tracking-wide text-ink/50 mb-2">Ingredients</h4>
+            <ul class="text-sm text-ink/75 space-y-1.5 mb-5 leading-relaxed">
+              <li>1½ cups graham cracker crumbs <span class="text-ink/40">(from NYT Cheesecake)</span></li>
+              <li>6 tbsp melted butter <span class="text-ink/40">(from NYT Cheesecake)</span></li>
+              <li>3 large egg yolks + zest of 2 lemons <span class="text-ink/40">(from Smitten Kitchen)</span></li>
+              <li>1 cup sweetened condensed milk <span class="text-ink/40">(from Smitten Kitchen)</span></li>
+              <li>4 tbsp granulated sugar, for the torched top <span class="text-ink/40">(from BBC Brûlée)</span></li>
+            </ul>
+            <h4 class="text-xs font-semibold uppercase tracking-wide text-ink/50 mb-2">Steps</h4>
+            <ol class="text-sm text-ink/75 space-y-1.5 list-decimal list-inside leading-relaxed">
+              <li>Press crumb mixture into a lined pan; bake 8 min at 350°F.</li>
+              <li>Whisk yolks, zest, and condensed milk; pour over crust.</li>
+              <li>Bake 15 min until just set; chill 3 hours.</li>
+              <li>Sprinkle sugar on top and torch until golden and crackled.</li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SOCIAL PROOF -->
+  <section id="examples" class="bg-cream">
+    <div class="max-w-6xl mx-auto px-5 sm:px-6 py-16 sm:py-24">
+      <div class="flex items-end justify-between flex-wrap gap-4 mb-10">
+        <h2 class="font-display font-700 text-3xl sm:text-4xl tracking-tight">Stitched by real cooks</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="card-hover rounded-stitch overflow-hidden bg-white stitch-seam">
+          <div class="h-1.5 bg-accent"></div>
+          <img src="images/card-pistachio-cake.jpg" alt="Pistachio birthday cake with whipped cream rosettes and a chocolate message" class="w-full h-40 object-cover" />
+        </div>
+        <div class="card-hover rounded-stitch overflow-hidden bg-white stitch-seam">
+          <div class="h-1.5 bg-zest"></div>
+          <img src="images/card-butter-chicken.jpg" alt="Creamy tomato butter chicken simmering in a Dutch oven" class="w-full h-40 object-cover" />
+        </div>
+        <div class="card-hover rounded-stitch overflow-hidden bg-white stitch-seam">
+          <div class="h-1.5 bg-periwinkle"></div>
+          <img src="images/card-veggie-quiche.jpg" alt="Baked vegetable frittata with tomato, broccoli, and parsley" class="w-full h-40 object-cover" />
+        </div>
+        <div class="card-hover rounded-stitch overflow-hidden bg-white stitch-seam">
+          <div class="h-1.5 bg-accent"></div>
+          <img src="images/card-choc-chunk-cookies.jpg" alt="Stack of chocolate chunk cookies in afternoon sunlight" class="w-full h-40 object-cover" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-cream/80">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 py-12 grid sm:grid-cols-2 gap-8 sm:gap-4 items-center">
+    <div>
+      <a href="#top" class="font-display font-700 text-lg text-cream focus-ring rounded">FrankenFood</a>
+      <p class="text-sm text-cream/50 mt-2 max-w-xs">Merge the internet's best recipes into your one perfect dish.</p>
+    </div>
+
+    <div class="flex flex-col sm:items-end gap-4">
+      <nav class="flex gap-6 text-sm">
+        <a href="#how-it-works" class="hover:text-cream transition-colors focus-ring rounded">How it works</a>
+        <a href="#examples" class="hover:text-cream transition-colors focus-ring rounded">Examples</a>
+        <a href="#hero-signup" class="hover:text-cream transition-colors focus-ring rounded">Sign up</a>
+      </nav>
+      <div class="flex gap-3">
+        <a href="https://twitter.com/intent/tweet?text=Check%20out%20FrankenFood&url=https%3A%2F%2Ffrankenfood.co" aria-label="Share on X/Twitter"
+           class="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full bg-cream/10 hover:bg-cream/20 transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7.1l-5.6-6.9L4.1 22H1l8.2-9.4L1 2h7.2l5 6.3L18.9 2zm-1.2 18h1.9L7.4 4h-2l12.3 16z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffrankenfood.co" aria-label="Share on Facebook"
+           class="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full bg-cream/10 hover:bg-cream/20 transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8.4h2.8l.4-3.3h-3.2V8.1c0-.95.27-1.6 1.63-1.6H17V3.5A22 22 0 0 0 14.7 3.4c-2.3 0-3.9 1.4-3.9 4v2.9H8v3.3h2.8V22h2.7z"/></svg>
+        </a>
+        <a href="mailto:?subject=Check%20out%20FrankenFood&body=https%3A%2F%2Ffrankenfood.co" aria-label="Share via email"
+           class="focus-ring inline-flex h-9 w-9 items-center justify-center rounded-full bg-cream/10 hover:bg-cream/20 transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" stroke-linejoin="round"/><path d="m4 6 8 7 8-7" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-cream/10 py-5 text-center text-xs text-cream/40">
+    © 2026 FrankenFood. All recipes merged with love (and a little electricity).
+  </div>
+</footer>
+
+<script>
+  const mergeBtn = document.getElementById('merge-btn');
+  const mergeBtnLabel = document.getElementById('merge-btn-label');
+  const mergeOutput = document.getElementById('merge-output');
+  const mergeLoading = document.getElementById('merge-loading');
+  const mergeResult = document.getElementById('merge-result');
+
+  mergeBtn.addEventListener('click', () => {
+    mergeBtn.disabled = true;
+    mergeBtnLabel.textContent = 'Stitching…';
+    mergeOutput.classList.remove('opacity-40');
+    mergeLoading.classList.remove('hidden');
+    mergeResult.classList.add('hidden');
+
+    setTimeout(() => {
+      mergeLoading.classList.add('hidden');
+      mergeResult.classList.remove('hidden');
+      mergeResult.classList.add('fade-in');
+      mergeBtnLabel.textContent = 'Stitch it together';
+      mergeBtn.disabled = false;
+    }, 1400);
+  });
+</script>
+
+</body>
+</html>
